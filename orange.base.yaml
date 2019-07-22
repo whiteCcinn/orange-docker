@@ -23,16 +23,21 @@ services:
       - CONSUL_BIND_INTERFACE=${CONSULE_GETWAY}
     ports:
       - '${CONSULE_LEADER_PORT}:8500'
-    command: 'agent --server=true --bootstrap-expect=2 --client=0.0.0.0 -ui'
+    command: 'consul agent -data-dir=/consul/data -config-dir=/consul/config -bind=192.167.0.4 --server=true --bootstrap-expect=2 --client=0.0.0.0 -ui'
   consul-follwer-1:
     container_name: ${APP}_follwer_1_consul
     environment:
       - CONSUL_BIND_INTERFACE=${CONSULE_GETWAY}
-    command: 'agent --server=false --client=0.0.0.0 --join consul'
+    command: 'consul agent -data-dir=/consul/data -config-dir=/consul/config -bind=192.167.0.5 --server=true --client=0.0.0.0 --join 192.167.0.4'
+    depends_on:
+      - consul
   consul-follwer-2:
-    container_name: ${APP}_follwer_1_consul
+    container_name: ${APP}_follwer_2_consul
     environment:
       - CONSUL_BIND_INTERFACE=${CONSULE_GETWAY}
-    command: 'agent --server=false --client=0.0.0.0 --join consul'
+    command: 'consul agent -data-dir=/consul/data -config-dir=/consul/config -bind=192.167.0.6 --server=false --client=0.0.0.0 --join 192.167.0.4'
+    depends_on:
+      - consul
   upstream-service:
     container_name: ${APP}_upstream_service
+    command: 'go run hello.go'

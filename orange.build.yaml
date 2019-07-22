@@ -26,4 +26,6 @@ services:
       context: ./consul
       dockerfile: Dockerfile
   upstream-service:
-    container_name: ${APP}_upstream_service
+    build:
+      context: ./upstream-services
+      dockerfile: Dockerfile

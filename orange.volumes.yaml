@@ -9,4 +9,4 @@ services:
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
   upstream-service:
     volumes:
-      - ./src/upstream-services:/www
+      - ./upstream-services/src/dispatcher-misc/src/go/:/www

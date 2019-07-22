@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  ord-network:
+    driver: ${NETWORK_DRIVER}
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NETWORK_SUBNET}
+
+services:
+  orange:
+    networks:
+      ord-network:
+        ipv4_address: 192.167.0.2
+  mysql:
+    networks:
+      ord-network:
+        ipv4_address: 192.167.0.3
+  consul:
+    networks:
+      ord-network:
+        ipv4_address: 192.167.0.4
+  consul-follwer-1:
+    networks:
+      ord-network:
+        ipv4_address: 192.167.0.5
+  consul-follwer-2:
+    networks:
+      ord-network:
+        ipv4_address: 192.167.0.6
+  upstream-service:
+    networks:
+      ord-network:
+        ipv4_address: 192.167.0.7
