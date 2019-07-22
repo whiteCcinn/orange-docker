@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  orange:
+    container_name: ${APP}_orange
+    ports:
+      - '${ORANGE_HTTP_PORT}:80'
+      - '${ORANGE_API_PORT}:7777'
+      - '${ORANGE_DASHBOARD_PORT}:9999'
+  mysql:
+    container_name: ${APP}_mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=${MYSQL_TIMEZONE}
+    ports:
+      - '${MYSQL_PORT}:3306'
+  consul:
+    container_name: ${APP}_leader_consul
+    environment:
+      - CONSUL_BIND_INTERFACE=${CONSULE_GETWAY}
+    ports:
+      - '${CONSULE_LEADER_PORT}:8500'
+    command: 'agent --server=true --bootstrap-expect=2 --client=0.0.0.0 -ui'
+  consul-follwer-1:
+    container_name: ${APP}_follwer_1_consul
+    environment:
+      - CONSUL_BIND_INTERFACE=${CONSULE_GETWAY}
+    command: 'agent --server=false --client=0.0.0.0 --join consul'
+  consul-follwer-2:
+    container_name: ${APP}_follwer_1_consul
+    environment:
+      - CONSUL_BIND_INTERFACE=${CONSULE_GETWAY}
+    command: 'agent --server=false --client=0.0.0.0 --join consul'
+  upstream-service:
+    container_name: ${APP}_upstream_service

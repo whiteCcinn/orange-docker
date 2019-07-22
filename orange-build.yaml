@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  orange:
+    build:
+      context: ./orange
+      dockerfile: Dockerfile
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+      args:
+        - MYSQL_VERSION=${MYSQL_VERSION}
+  consul:
+    build:
+      context: ./consul
+      dockerfile: Dockerfile
+      args:
+        - CONSULE_LEADER_PORT=${CONSULE_LEADER_PORT}
+  consul-follwer-1:
+    build:
+      context: ./consul
+      dockerfile: Dockerfile
+  consul-follwer-2:
+    build:
+      context: ./consul
+      dockerfile: Dockerfile
+  upstream-service:
+    container_name: ${APP}_upstream_service
