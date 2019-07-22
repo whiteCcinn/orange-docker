@@ -22,6 +22,8 @@ docker-compose up
 
 ## Register Upstream Service
 
+### Non-invasive registration
+
 ```
 curl \
     --request PUT \
