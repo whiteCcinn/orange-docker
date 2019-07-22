@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  orange:
+    volumes:
+      - ./src/orange:/www
+  mysql:
+    volumes:
+      - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+  upstream-service:
+    volumes:
+      - ./src/upstream-services:/www
