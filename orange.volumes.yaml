@@ -3,7 +3,7 @@ version: '3'
 services:
   orange:
     volumes:
-      - ./src/orange:/www
+      - ./orange/src/orange:/www
   mysql:
     volumes:
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
