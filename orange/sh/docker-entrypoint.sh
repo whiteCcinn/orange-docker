@@ -16,9 +16,11 @@ ORANGE_PWD=${MYSQL_PWD:-default_password}
 if [[ ! -e /www/manifest/orangelib.meta ]];then
   opm install sumory/lor
   opm --install-dir=./ get zhangbao0325/orangelib
-  luarocks install luafilesystem luasocket lrandom
-  cp -v conf/{orange.conf.example,orange.conf}
-  cp -v conf/{nginx.conf.example,nginx.conf}
+  for i in luafilesystem luasocket lrandom;do
+    luarocks install ${i}
+  done
+  cp -vf conf/{orange.conf.example,orange.conf}
+  cp -vf conf/{nginx.conf.example,nginx.conf}
 
   sed -i "s/\"host\": \"127.0.0.1\"/\"host\": \"${ORANGE_HOST}\"/g" ${ORANGE_CONF}
   sed -i "s/\"port\": \"3306\"/\"port\": \"${ORANGE_PORT}\"/g" ${ORANGE_CONF}
@@ -32,3 +34,5 @@ cmd=$1
 if [[ "${cmd}" != 'bash' ]];then
   bash /www/start.sh
 fi
+
+$*

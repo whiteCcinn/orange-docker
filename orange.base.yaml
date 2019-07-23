@@ -13,7 +13,7 @@ services:
       - MYSQL_DATABASE=orange
       - MYSQL_USER=root
       - MYSQL_PWD=${MYSQL_ROOT_PASSWORD}
-    command: 'tail -f /www/logs/error.log'
+    command: 'tail -f /dev/null'
   mysql:
     container_name: ${APP}_mysql
     environment:

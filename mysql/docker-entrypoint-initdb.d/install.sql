@@ -1,3 +1,10 @@
+
+DROP DATABASE IF EXISTS `orange`;
+
+CREATE DATABASE `orange`;
+
+use `orange`;
+
 DROP TABLE IF EXISTS `basic_auth`;
 
 CREATE TABLE `basic_auth` (
