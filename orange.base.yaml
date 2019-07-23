@@ -7,7 +7,13 @@ services:
       - '${ORANGE_HTTP_PORT}:80'
       - '${ORANGE_API_PORT}:7777'
       - '${ORANGE_DASHBOARD_PORT}:9999'
-    command: 'bash start.sh'
+    environment:
+      - MYSQL_HOST=192.167.0.3
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=orange
+      - MYSQL_USER=root
+      - MYSQL_PWD=${MYSQL_ROOT_PASSWORD}
+    command: 'tail -f /www/logs/error.log'
   mysql:
     container_name: ${APP}_mysql
     environment:
