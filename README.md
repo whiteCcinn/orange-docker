@@ -48,3 +48,7 @@ docker kill upstream-service
 ![images/5.png](images/5.png)
 
 ![images/6.png](images/6.png)
+
+## Orange Dashboard
+
+![images/7.png](images/7.png)
