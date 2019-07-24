@@ -1,0 +1,19 @@
+{
+  "ID": "upstream-service2",
+  "Name": "upstream-service-go",
+  "Tags": ["go", "hello world"],
+  "Address": "192.167.0.8",
+  "Port": 80,
+  "Meta": {
+    "service_name": "HelloWorld"
+  },
+  "EnableTagOverride": false,
+  "Check": {
+    "HTTP": "http://192.167.0.8:80",
+    "Interval": "10s"
+  },
+  "Weights": {
+    "Passing": 1,
+    "Warning": 1
+  }
+}

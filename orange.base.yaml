@@ -48,3 +48,6 @@ services:
   upstream-service:
     container_name: ${APP}_upstream_service
     command: 'go run hello.go'
+  upstream-service2:
+    container_name: ${APP}_upstream_service2
+    command: 'go run hello.go'

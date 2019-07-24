@@ -33,3 +33,7 @@ services:
     networks:
       ord-network:
         ipv4_address: 192.167.0.7
+  upstream-service2:
+    networks:
+      ord-network:
+        ipv4_address: 192.167.0.8

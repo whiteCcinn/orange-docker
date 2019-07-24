@@ -10,3 +10,6 @@ services:
   upstream-service:
     volumes:
       - ./upstream-services/src/dispatcher-misc/src/go/:/www
+  upstream-service2:
+    volumes:
+      - ./upstream-services/src/dispatcher-misc/src/go/:/www

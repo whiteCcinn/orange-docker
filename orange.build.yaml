@@ -29,3 +29,7 @@ services:
     build:
       context: ./upstream-services
       dockerfile: Dockerfile
+  upstream-service2:
+    build:
+      context: ./upstream-services
+      dockerfile: Dockerfile

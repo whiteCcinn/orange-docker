@@ -29,6 +29,11 @@ curl \
     --request PUT \
     --data @upstream-services/register/register.json \
     http://127.0.0.1:8508/v1/agent/service/register
+
+curl \
+    --request PUT \
+    --data @upstream-services/register/register2.json \
+    http://127.0.0.1:8508/v1/agent/service/register
 ```
 
 ![images/1.png](images/1.png)
@@ -52,3 +57,11 @@ docker kill upstream-service
 ## Orange Dashboard
 
 ![images/7.png](images/7.png)
+
+### Consul_upstream(balancer)
+
+```
+curl -v -H 'host:test.foo' http://127.0.0.1:8889/
+```
+
+![images/8.png](images/8.png)
