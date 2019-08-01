@@ -19,8 +19,11 @@ if [[ ! -e /www/manifest/orangelib.meta ]];then
   for i in luafilesystem luasocket lrandom;do
     luarocks install ${i}
   done
-  cp -vf conf/{orange.conf.example,orange.conf}
-  cp -vf conf/{nginx.conf.example,nginx.conf}
+  cp -v conf/{orange.conf.example,orange.conf}
+  cp -v conf/{nginx.conf.example,nginx.conf}
+   
+  ## 添加consul_balancer配置信息
+  ## 启用consul_balancer插件
 
   sed -i "s/\"host\": \"127.0.0.1\"/\"host\": \"${ORANGE_HOST}\"/g" ${ORANGE_CONF}
   sed -i "s/\"port\": \"3306\"/\"port\": \"${ORANGE_PORT}\"/g" ${ORANGE_CONF}
